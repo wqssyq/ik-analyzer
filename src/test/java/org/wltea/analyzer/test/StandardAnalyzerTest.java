@@ -6,13 +6,13 @@ package org.wltea.analyzer.test;
 import java.io.IOException;
 import java.io.StringReader;
 
-import org.apache.lucene.analysis.SimpleAnalyzer;
+import org.apache.lucene.analysis.core.SimpleAnalyzer;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.cjk.CJKAnalyzer;
 import org.apache.lucene.analysis.cn.ChineseAnalyzer;
 import org.apache.lucene.analysis.cn.smart.SmartChineseAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
-import org.apache.lucene.analysis.tokenattributes.TermAttribute;
+import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 import org.apache.lucene.util.Version;
 
 import junit.framework.TestCase;
@@ -79,8 +79,8 @@ public class StandardAnalyzerTest extends TestCase{
 		
 		long begin = System.currentTimeMillis();   
 		
-		TokenStream tokenStream = ss.tokenStream("", reader);
 		try {
+			TokenStream tokenStream = ss.tokenStream("", reader);
 			while(tokenStream.incrementToken()){
 //				TermAttribute termAttribute = tokenStream.getAttribute(TermAttribute.class);
 //				System.out.println(termAttribute.toString());
